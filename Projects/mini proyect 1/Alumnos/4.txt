@@ -1,0 +1,94 @@
+# Mini project 1 : Rock-paper-scissors-lizard-Spock game
+
+def number_to_name(number):    
+    '''convert number to a name using if/elif/else'''
+
+    if (number == 0) :
+        name = "rock"
+    elif (number == 1) :
+        name = "Spock"
+    elif (number == 2) :
+        name = "paper"
+    elif (number == 3) :
+        name = "lizard"
+    elif (number == 4) :
+        name = "scissors"
+    else :
+        print "incorrect number passed to number_to_name"
+        name = "none"
+    return name
+
+def name_to_number(name):
+    '''convert name to number using if/elif/else'''
+
+    if (name == "rock") :
+        number = 0
+    elif (name == "Spock") :
+        number = 1
+    elif (name == "paper") :
+        number = 2
+    elif (name == "lizard") :
+        number = 3
+    elif (name == "scissors") :
+        number = 4
+    else :
+        print "incorrect name passed to name_to_number"
+        number = 5
+        
+    return number
+
+def rpsls(name): 
+    '''Function to emulate rock-paper-spock-lizard-scissors game'''
+    
+    # convert name to player_number using name_to_number
+    player_number = name_to_number(name)
+    if (player_number > 4) :
+        print "Error!!! Unknown name\n"
+        return
+    
+    # compute random guess for comp_number using random.randrange()
+    import random
+    comp_number = random.randrange(0,5)
+    
+    # compute difference of player_number and comp_number modulo five
+    difference = (player_number - comp_number) % 5
+    
+    # use if/elif/else to determine winner
+    comp_wins = False
+    player_wins = False
+    its_a_tie = False
+    
+    if (difference == 0):
+        its_a_tie = True
+    elif ( difference < 3 ) :
+        player_wins = True
+    elif (difference > 2) :
+        comp_wins = True
+    
+        
+    # convert comp_number to name using number_to_name
+    comp_name = number_to_name(comp_number)
+    if (comp_name == "none") :
+        print "Error! Computer chose incorrect name!\n"
+        return
+    
+    # print results
+    print "Player chooses ", name
+    print "Computer chooses", comp_name
+    if (comp_wins) :
+        print "Computer wins!\n"
+    elif (player_wins) :
+        print "Player wins!\n"
+    elif (its_a_tie) :
+        print "Player and computer tie!\n"
+    else :
+        print "Unknown result!!!\n"
+       
+    return
+    
+# Sample inputs to the game
+rpsls("rock")
+rpsls("Spock")
+rpsls("paper")
+rpsls("lizard")
+rpsls("scissors")

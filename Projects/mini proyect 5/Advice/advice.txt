@@ -1,0 +1,1 @@
+peer 3 ? Good job! Just two pieces of advice on the coding instead of using strings True and False, you should use boolean values directly and test for them directly (i.e., if not exposed[i]); second less important, you figured out range(8)  2, so you could have used [False]  16 for the exposed list as well ;) But good job again!
